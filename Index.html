@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>UMA CLINIC | Dr. Dency Dadhania</title>
+  <meta charset="UTF-8">
+  <!-- HOW: Sets viewport width to match the device's physical screen size -->
+  <!-- WHY: Essential for mobile phones to render mobile layouts instead of zooming out -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HOW: Loads 'Plus Jakarta Sans' from Google Fonts in <head> -->
+  <!-- WHY: Replaces plain Arial with a clean, modern healthcare typeface used by top clinic websites -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* HOW: Applies smooth scroll behavior to the root HTML element */
+    /* WHY: Smoothly glides down to sections instead of jumping abruptly when clicking nav links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* HOW: Uses Flexbox column layout, min-height: 100vh, and Plus Jakarta Sans font */
+    /* WHY: Keeps footer anchored to the bottom of short screens and sets a soft medical blue-gray backdrop */
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #f0f4f8;
+      color: #1e293b;
+    }
+
+    /* HOW: Uses position: sticky; top: 0; z-index: 100; with a translucent white background */
+    /* WHY: Keeps the clinic title and navigation links visible at the top of the screen while scrolling */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dce3ec;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #091c7d;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #091c7d;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* HOW: Caps width at 850px, centers with margin: 0 auto, and uses gap: 22px */
+    /* WHY: Prevents cards from stretching too wide on desktop monitors and spaces cards evenly */
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 28px 20px;
+      box-sizing: border-box;
+    }
+
+    /* HOW: White card box with rounded corners, soft shadow, and a 4px solid #091c7d left border */
+    /* WHY: Gives every section a clean, distinct medical card appearance */
+    section {
+      background-color: #ffffff;
+      border: 1px solid #dce3ec;
+      border-left: 4px solid #091c7d;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 2px 10px rgba(9, 28, 125, 0.05);
+    }
+
+    /* HOW: Applies a soft white-to-light-blue linear gradient and thicker 5px left border */
+    /* WHY: Makes the top Hero Welcome Banner stand out visually from standard content cards */
+    .hero-card {
+      background: linear-gradient(135deg, #ffffff 0%, #e8effa 100%);
+      border: 1px solid #c9d8f0;
+      border-left: 5px solid #091c7d;
+    }
+
+    /* HOW: Styled pill badge with dark blue fill and rounded corners */
+    /* WHY: Highlights BHMS & Gold Medalist credentials immediately in the first 3 seconds */
+    .badge {
+      display: inline-block;
+      background-color: #091c7d;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero-card h2 {
+      font-size: 1.65rem;
+      margin-bottom: 8px;
+    }
+
+    /* HOW: CSS Grid with repeat(3, 1fr) creating 3 equal-width columns */
+    /* WHY: Breaks up text and showcases 3 core clinic strengths side-by-side at a glance */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .highlight-box {
+      background-color: #ffffff;
+      border: 1px solid #dce3ec;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(9, 28, 125, 0.04);
+    }
+
+    .highlight-box strong {
+      display: block;
+      color: #091c7d;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .highlight-box span {
+      font-size: 0.85rem;
+      color: #475569;
+    }
+
+    /* HOW: CSS Grid with repeat(2, 1fr) creating 2 equal-width columns */
+    /* WHY: Organizes common conditions treated into neat, scannable boxes for patients */
+    .treatments-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .treatment-item {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+
+    .treatment-item strong {
+      color: #091c7d;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    section p {
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: #091c7d;
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      color: #1e293b;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      line-height: 1.7;
+      color: #334155;
+    }
+
+    address {
+      font-style: normal;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 18px;
+    }
+
+    /* HOW: Flexbox container with flex-wrap: wrap for action buttons */
+    /* WHY: Aligns Call, WhatsApp, and Map buttons side-by-side and wraps cleanly on narrow phones */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    /* HOW: Solid brand-blue button styling for primary Call Now action */
+    /* WHY: Draws immediate visual focus for urgent patient phone calls */
+    .btn-primary {
+      display: inline-block;
+      background-color: #091c7d;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #061359;
+    }
+
+    /* HOW: Green button styling matching WhatsApp's recognizable brand color */
+    /* WHY: Signals instant messaging/appointment booking at a glance */
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #16a34a;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #15803d;
+    }
+
+    /* HOW: White button with dark-blue border for secondary actions (Maps / Scroll to Timings) */
+    /* WHY: Keeps secondary actions clear without competing with Call Now */
+    .btn-outline {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #091c7d;
+      border: 1.5px solid #091c7d;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline:hover {
+      background-color: #eef2ff;
+    }
+
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #dce3ec;
+      text-align: center;
+      padding: 18px;
+      color: #475569;
+      font-size: 0.9rem;
+    }
+
+    /* HOW: @media query targeting screens 600px wide or smaller */
+    /* WHY: Stacks the header, highlights grid, and treatments grid into 1 clean column on mobile phones */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 16px;
+        text-align: center;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .content-wrapper {
+        padding: 18px 14px;
+        gap: 16px;
+      }
+
+      section {
+        padding: 20px;
+      }
+
+      .highlights-grid,
+      .treatments-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HOW: Sticky <header> with clinic title and 4 anchor links -->
+  <!-- WHY: Gives patients instant one-tap navigation to Home, Treatments, About, and Contact -->
+  <header>
+    <h1>UMA CLINIC</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content-wrapper">
+    <!-- 1. Hero Welcome Banner -->
+    <!-- HOW: Combines .hero-card styling, credential badge, intro text, and Call/WhatsApp buttons -->
+    <!-- WHY: Builds immediate patient trust and lets mobile visitors call or message without scrolling -->
+    <section id="home" class="hero-card">
+      <span class="badge">BHMS &bull; GOLD MEDALIST</span>
+      <h2>DR. DENCY DADHANIA</h2>
+      <p>
+        We offer personalized treatment using <strong>Homeopathic</strong> medicine, tailored to each patient's condition and preference.
+      </p>
+      <div class="btn-row">
+        <!-- HOW: Uses tel:+91... protocol (replace 9876543210 with your 10-digit number) -->
+        <!-- WHY: Opens the phone's dialer immediately when tapped on mobile -->
+        <a href="tel:+918320607876" class="btn-primary">&#128222; Call Now</a>
+
+        <!-- HOW: Uses https://wa.me/91... with a pre-filled greeting message -->
+        <!-- WHY: Starts a WhatsApp chat with Dr. Dency in one tap -->
+        <a href="https://wa.me/918320607876?text=Hello%20Dr.%20Dency,%20I%20would%20like%20to%20book%20an%20appointment%20at%20Uma%20Clinic." target="_blank" rel="noopener" class="btn-whatsapp">
+          &#128172; WhatsApp Appointment
+        </a>
+
+        <a href="#contact" class="btn-outline">Clinic Timings</a>
+      </div>
+    </section>
+
+    <!-- 2. Trust Highlights Row -->
+    <div class="highlights-grid">
+      <div class="highlight-box">
+        <strong>Treatment</strong>
+        <span>Homeopathy</span>
+      </div>
+      <div class="highlight-box">
+        <strong>Gold Medalist</strong>
+        <span>Parul University, Vadodara</span>
+      </div>
+      <div class="highlight-box">
+        <strong>Patient-First Care</strong>
+        <span>Personalized Consultation</span>
+      </div>
+    </div>
+
+    <!-- 3. Treatments & Care Grid -->
+    <section id="treatments">
+      <h2>Treatments &amp; Care</h2>
+      <p>Comprehensive general and family healthcare tailored to your recovery goals:</p>
+      <div class="treatments-grid">
+        <div class="treatment-item">
+          <strong>General &amp; Acute Care</strong>
+          Fever, cold, cough, seasonal infections, and body pain.
+        </div>
+        <div class="treatment-item">
+          <strong>Skin &amp; Hair Conditions</strong>
+          Allergies, acne, eczema, hair fall, and chronic skin care.
+        </div>
+        <div class="treatment-item">
+          <strong>Respiratory &amp; Digestive</strong>
+          Asthma, sinusitis, acidity, indigestion, and gastric issues.
+        </div>
+        <div class="treatment-item">
+          <strong>Chronic &amp; Family Health</strong>
+          Joint pain, migraine, immunity support, and pediatric care.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. About Section -->
+    <section id="about">
+      <h2>About Dr. Dency Dadhania</h2>
+      <p>Completed <strong>BHMS</strong> (<strong>Gold Medalist</strong>) from Parul University, Vadodara, Gujarat. Dedicated to providing ethical, patient-centered medical care combining modern clinical diagnosis with holistic homeopathic.</p>
+    </section>
+
+    <!-- 5. Contact & Location Card -->
+    <section id="contact">
+      <h2>Contact &amp; Clinic Hours</h2>
+      
+      <h3>OPD Timings</h3>
+      <ul class="hours-list">
+        <li><strong>Monday – Saturday:</strong> 10:00 AM – 1:00 PM &amp; 5:00 PM – 8:30 PM</li>
+        <li><strong>Sunday:</strong> Closed (Emergency by appointment only)</li>
+      </ul>
+
+      <h3>Clinic Address</h3>
+      <address>
+        Flora Unique, Uma Chowk, Opposite Family Mart, Near Primer School, Gangotri Park Main Road, Kerala Park, Rajkot - 360005
+      </address>
+
+      <div class="btn-row">
+        <a href="tel:+918320607876" class="btn-primary">&#128222; Call Now</a>
+        <a href="https://wa.me/919876543210?text=Hello%20Dr.%20Dency,%20I%20would%20like%20to%20book%20an%20appointment%20at%20Uma%20Clinic." target="_blank" rel="noopener" class="btn-whatsapp">
+          &#128172; WhatsApp
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Uma+Chowk+Gangotri+Park+Main+Road+Rajkot+360005" target="_blank" rel="noopener" class="btn-outline">
+          &#128205; Open in Google Maps
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Uma Clinic &mdash; Dr. Dency Dadhania. All Rights Reserved.
+  </footer>
+</body>
+</html>
